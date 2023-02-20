@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import Button from './components/Button/Button';
 import HistoryTable from './components/HistoryTable/HistoryTable';
 import Select from './components/Select/Select';
@@ -8,6 +9,7 @@ import Input from './components/Input/Input';
 import { findHighestPrimeBetweenToNumbers } from './utils/numbers';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
@@ -24,6 +26,13 @@ function App() {
   const calculate = () => {
     const firstNumber = parseInt(firstOperand);
     const secondNumber = parseInt(secondOperand);
+
+    if(!firstNumber || !secondNumber) {
+      toast.error("Please enter numbers", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      })
+      return;
+    }
 
     switch(activeOperation) {
       case OperationSelection.sum:
@@ -58,10 +67,11 @@ function App() {
       <Input handleChange={handleOperationChange} id='second-operand' />
       <Select 
         options={operationSelection} 
-        activeOperation={activeOperation}
+        activeOption={activeOperation}
         setActiveOperation={changeActiveOperation} />
       <Button buttonClick={calculate}>Calculate</Button>
       <HistoryTable operationHistory={operationHistory} />
+      <ToastContainer />
     </div>
   );
 }

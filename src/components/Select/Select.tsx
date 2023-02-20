@@ -5,14 +5,14 @@ import styles from './Select.module.css';
 
 interface Props {
   options: OperationSelection[];
-  activeOperation: OperationSelection;
+  activeOption: OperationSelection;
   setActiveOperation: (option: OperationSelection) => void;
 }
 
-const Select = ({options, activeOperation, setActiveOperation}: Props) => (
+const Select = ({options, activeOption, setActiveOperation}: Props) => (
   <div className={styles.select}>
     {options.map((option, i) => {
-      const isActive = option === activeOperation;
+      const isActive = option === activeOption;
 
       return <Button key={i} buttonClick={() => setActiveOperation(option)} isActive={isActive}>{option}</Button>
     })}

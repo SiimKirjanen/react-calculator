@@ -23,4 +23,10 @@ describe('<Button />', () => {
     expect(buttonClick).toHaveBeenCalledTimes(1);
   });
 
+  it('should set class when button is marked as active', () => {
+    render(<Button buttonClick={buttonClick} isActive={true}>Button test text</Button>);
+
+    expect(screen.getByRole('button')).toHaveClass('active');
+  });
+
 });

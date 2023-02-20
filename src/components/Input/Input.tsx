@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Input = ({handleChange, id}: Props) => (
-  <input type="number" className={styles.input} onChange={(e) =>handleChange(e, id) } />
+  <input type="number" aria-label="calculator-input" className={styles.input} onChange={(e) =>handleChange(e, id) } />
 );
 
 export default Input;
