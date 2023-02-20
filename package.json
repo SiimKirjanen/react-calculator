@@ -21,10 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:e2e": "cypress run --headed",
-    "eject": "react-scripts eject"
+    "test:e2e": "cypress run --headed"
   },
   "eslintConfig": {
     "extends": [
