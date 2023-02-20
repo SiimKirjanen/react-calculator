@@ -1,7 +1,7 @@
 import React from 'react';
 import { OperationSelection } from '../../enums/operationSelection';
 import Button from '../Button/Button';
-import styles from './Select.module.scss';
+import styles from './Select.module.css';
 
 interface Props {
   options: OperationSelection[];
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Select = ({options, activeOperation, setActiveOperation}: Props) => (
-  <div>
+  <div className={styles.select}>
     {options.map((option, i) => {
       const isActive = option === activeOperation;
 

@@ -1,13 +1,13 @@
 import React from 'react';
 import { OperationHistory } from '../../interfaces/operationHistory.interface';
-import styles from './HistoryTable.module.scss';
+import styles from './HistoryTable.module.css';
 
 interface Props {
   operationHistory: OperationHistory[];
 }
 
 const HistoryTable = ({operationHistory}: Props) => {
-  return <table>
+  return <table className={`${styles.historyTable} table`}>
     <thead>
       <tr>
         <th>Operation</th>

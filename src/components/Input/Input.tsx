@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './Input.module.scss';
+
+import styles from './Input.module.css';
 
 interface Props {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>, id: string) => void;
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const Input = ({handleChange, id}: Props) => (
-  <input type="number" onChange={(e) =>handleChange(e, id) } />
+  <input type="number" className={styles.input} onChange={(e) =>handleChange(e, id) } />
 );
 
 export default Input;

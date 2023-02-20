@@ -45,8 +45,7 @@ function App() {
   }
   
   return (
-    <div>
-      <HistoryTable operationHistory={operationHistory} />
+    <div className='app'>
       <Input handleChange={handleOperationChange} id='first-operand' />
       <Input handleChange={handleOperationChange} id='second-operand' />
       <Select 
@@ -54,6 +53,7 @@ function App() {
         activeOperation={activeOperation}
         setActiveOperation={changeActiveOperation} />
       <Button buttonClick={calculate}>Calculate</Button>
+      <HistoryTable operationHistory={operationHistory} />
     </div>
   );
 }

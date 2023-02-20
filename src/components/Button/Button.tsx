@@ -5,17 +5,17 @@ import styles from './Button.module.scss';
 
 interface Props {
   children: OperationSelection | string;
-  
   buttonClick: () => void;
   isActive?: boolean;
 }
 
 const Button = ({children, buttonClick, isActive = false}: Props) => {
   const btnClasses = classNames({
+    'btn btn-outline-secondary mx-2': true,
     'active': isActive
   });
 
-  return <button className={btnClasses} onClick={buttonClick}>
+  return <button type="button" className={btnClasses} onClick={buttonClick}>
     {children}
   </button>
 };
