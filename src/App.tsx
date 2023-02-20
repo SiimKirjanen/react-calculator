@@ -5,6 +5,7 @@ import Button from './components/Button/Button';
 import HistoryTable from './components/HistoryTable/HistoryTable';
 import Select from './components/Select/Select';
 import { OperationHistory } from './interfaces/operationHistory.interface';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   let operationHistory: OperationHistory[] = [];
@@ -16,7 +17,7 @@ function App() {
   };
   
   return (
-    <div>
+    <div className="app">
       <HistoryTable operationHistory={operationHistory} />
       <Select 
         options={operationSelection} 
