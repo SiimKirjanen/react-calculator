@@ -6,8 +6,8 @@ interface Props {
   operationHistory: OperationHistory[];
 }
 
-const HistoryTable = ({operationHistory}: Props) => (
-  <table>
+const HistoryTable = ({operationHistory}: Props) => {
+  return <table>
     <thead>
       <tr>
         <th>Operation</th>
@@ -23,6 +23,6 @@ const HistoryTable = ({operationHistory}: Props) => (
       ))}
     </tbody>
   </table>
-);
+};
 
 export default HistoryTable;

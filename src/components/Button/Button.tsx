@@ -1,9 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import { OperationSelection } from '../../enums/operationSelection';
 import styles from './Button.module.scss';
 
 interface Props {
-  children: string;
+  children: OperationSelection | string;
+  
   buttonClick: () => void;
   isActive?: boolean;
 }
