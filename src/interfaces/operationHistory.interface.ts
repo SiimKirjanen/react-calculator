@@ -1,4 +1,4 @@
 export interface OperationHistory {
-    result: number;
+    result: number|null;
     operation: string;
 }

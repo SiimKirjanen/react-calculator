@@ -5,15 +5,16 @@ import Select from './components/Select/Select';
 import { OperationHistory } from './interfaces/operationHistory.interface';
 import { OperationSelection } from './enums/operationSelection';
 import Input from './components/Input/Input';
+import { findHighestPrimeBetweenToNumbers } from './utils/numbers';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
 function App() {
-  const [activeOperation, setActiveOperation] = useState(OperationSelection.sum);
+  const [activeOperation, setActiveOperation] = useState<OperationSelection>(OperationSelection.sum);
   const [operationHistory, setOperationHistory] = useState<OperationHistory[]>([]);
-  const [firstOperand, setFirstOperand] = useState('');
-  const [secondOperand, setSecondOperand] = useState('');
+  const [firstOperand, setFirstOperand] = useState<string>('');
+  const [secondOperand, setSecondOperand] = useState<string>('');
   const operationSelection = [OperationSelection.sum, OperationSelection.divide, OperationSelection.remainder, OperationSelection.highestPrime];
 
   const changeActiveOperation = (operation: OperationSelection) => {
@@ -21,17 +22,24 @@ function App() {
   };
 
   const calculate = () => {
+    const firstNumber = parseInt(firstOperand);
+    const secondNumber = parseInt(secondOperand);
+
     switch(activeOperation) {
       case OperationSelection.sum:
-          setOperationHistory(prevState  => [...prevState ,{ operation: firstOperand + '+' + secondOperand, result: parseInt(firstOperand) + parseInt(secondOperand)}]);
+          setOperationHistory(prevState  => [...prevState ,{ operation: firstOperand + '+' + secondOperand, result: firstNumber + secondNumber }]);
         break;
 
         case OperationSelection.divide:
-          setOperationHistory(prevState  => [...prevState ,{ operation: firstOperand + '/' + secondOperand, result: parseInt(firstOperand) / parseInt(secondOperand)}]);
+          setOperationHistory(prevState  => [...prevState ,{ operation: firstOperand + '/' + secondOperand, result: firstNumber / secondNumber}]);
         break;
 
         case OperationSelection.remainder:
-          setOperationHistory(prevState  => [...prevState ,{ operation: firstOperand + '%' + secondOperand, result: parseInt(firstOperand) % parseInt(secondOperand)}]);
+          setOperationHistory(prevState  => [...prevState ,{ operation: firstOperand + '%' + secondOperand, result: firstNumber % secondNumber}]);
+        break;
+
+        case OperationSelection.highestPrime:
+          setOperationHistory(prevState  => [...prevState ,{ operation: 'Highest prime between ' + firstOperand + ' and ' + secondOperand, result: findHighestPrimeBetweenToNumbers(firstNumber, secondNumber) }]);
         break;
     }
   }
